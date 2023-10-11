@@ -56,7 +56,7 @@ class _FavoritesState extends State<Favorites> {
                  style: GoogleFonts.poppins(
                    fontWeight: FontWeight.w400,
                    fontSize: 12,
-                   color: Color(0xffBFBFBF),
+                   color: Color(0xff5d8aa8),
                  ),
                  ),
                  trailing: IconButton(

@@ -6,7 +6,7 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:new_figma_project/test_page.dart';
 import 'package:new_figma_project/workers/card_controller.dart';
 import 'package:new_figma_project/workers/carpenter_controller.dart';
-import 'package:new_figma_project/workers/favorite_controller.dart';
+// import 'package:new_figma_project/workers/favorite_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
 
@@ -31,58 +31,19 @@ class _NewCarpState extends State<NewCarp> {
   List title = ['Expert Carpenter','Expert Carpenter','Expert Carpenter','Pro Carpenter','Expert Carpenter','Expert Carpenter','Expert Carpenter'];
   List price = ['55.00/','53.00/','53.00/','180.00/','53.00/','53.00/','53.00/'];
   List star = ['assets/images/star.png','assets/images/4star.png','assets/images/star.png','assets/images/4star.png','assets/images/4star.png','assets/images/4star.png','assets/images/star.png'];
-    @override
+
 
   // PainterController controllerGet = Get.put(PainterController());
-  CardController controllerGet1 = Get.put(CardController());
+   CardController controllerGet1 = Get.put(CardController());
   CarpenterController controllerGet =Get.put(CarpenterController());
   @override
   Widget build(BuildContext context) {
     final leftviewpadding =MediaQuery.of(context).viewPadding.left;
     final rightviewpadding =MediaQuery.of(context).viewPadding.right;
-    final topviewpadding =MediaQuery.of(context).viewPadding.top;
-    final bottomviewpadding =MediaQuery.of(context).viewPadding.bottom;
+    // final topviewpadding =MediaQuery.of(context).viewPadding.top;
+    // final bottomviewpadding =MediaQuery.of(context).viewPadding.bottom;
     double value = 3.5;
-    // Future<FigmaApi>getRecords() async {
-    //   var response=await http.get(Uri.parse("https://api.jsonbin.io/v3/b/651e63dc12a5d376598775ab"));
-    //   print('respppppppppp:${response.body}');
-    //   if(response.statusCode==200){
-    //     var jsondata=jsonDecode(response.body.toString());
-    //     var data=FigmaApi.fromJson(jsondata);
-    //
-    //     return data;
-    //   }else{
-    //     throw Exception("failed to load list");
-    //   }
-    // }
 
-    // Future<List<FigmaApi>?>getRecords() async {
-    //   var response=await http.get(Uri.parse("https://api.jsonbin.io/v3/b/651e63dc12a5d376598775ab"));
-    //    // print('respppppppppp:${response.body}');
-    //   if(response.statusCode==200){
-    //     var datalist=jsonDecode(response.body) as List;
-    //      // var list=datalist.map((eachelementin_datalist) => FigmaApi.fromJson(eachelementin_datalist)).toList();
-    //
-    //       return figmaApi;
-    //
-    //
-    //   }else{
-    //     throw Exception("failed to load list");
-    //   }
-    // List<FigmaApi> figmaApi=[];
-    // Future<List<FigmaApi>>getRecords()async{
-    //   final response = await http.get(Uri.parse("https://api.jsonbin.io/v3/b/651e63dc12a5d376598775ab"));
-    //   if(response.statusCode==200){
-    //     var data=jsonDecode(response.body.toString());
-    //     for(Map i in data){
-    //       figmaApi.add(FigmaApi.fromJson(i));
-    //     } return figmaApi;
-    //   }else{
-    //     return figmaApi;
-    //   }
-    //
-    //
-    // }
     Future<List<Record>?>getRecords() async {
       var response = await http.get(
           Uri.parse("https://api.jsonbin.io/v3/b/651e63dc12a5d376598775ab"));
