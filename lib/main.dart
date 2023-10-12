@@ -1,29 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:new_figma_project/bottom_navigation/finder_screen.dart';
-import 'package:new_figma_project/technician_page/bottom_nav/navigation.dart';
-import 'package:new_figma_project/workers/painter_list.dart';
-import 'package:new_figma_project/sign_up_figma.dart';
 import 'package:new_figma_project/splash_screen1.dart';
 import 'package:sizer/sizer.dart';
 
-import 'bottom_navigation/bottom_bar1.dart';
-import 'bottom_navigation/schedules.dart';
-import 'grids/gridview_pics.dart';
-import 'login_paint.dart';
-import 'new_homepage.dart';
-import 'profile.dart';
-import 'technician_page/expert.dart';
-import 'technician_page/personal_info.dart';
-import 'technician_page/tech_home.dart';
-import 'technician_page/verification.dart';
-import 'test_1.dart';
-import 'test_page.dart';
 import 'user_details.dart';
-import 'workers/carpenter.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'widget_tree.dart';
 
 
 void main() {

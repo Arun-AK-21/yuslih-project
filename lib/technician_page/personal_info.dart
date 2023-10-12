@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import 'expert.dart';
@@ -174,9 +174,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     ),
                     onPressed: () {
                   if(formkey.currentState!.validate()){
-                    // Get.to(ExpertTech());
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ExpertTech(),));
-
+                     Get.to(ExpertTech());
+                    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => ExpertTech(),));
+                      setState(() {
+                        _nameController.clear();
+                        _phoneController.clear();
+                      });
                   }
                 }, child: Text("Next",
                 style: GoogleFonts.poppins(

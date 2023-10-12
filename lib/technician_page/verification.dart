@@ -12,6 +12,9 @@ class Verify extends StatefulWidget {
 }
 
 class _VerifyState extends State<Verify> {
+  TextEditingController otp1 = TextEditingController();
+  TextEditingController otp2=TextEditingController();
+  TextEditingController otp3 = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -135,6 +138,7 @@ class _VerifyState extends State<Verify> {
                           width: constraints.maxWidth/4,
 
                           child: TextFormField(
+                            controller: otp1,
                             keyboardType: TextInputType.number,
                             maxLength: 3,
                             autofocus: true,
@@ -180,6 +184,7 @@ class _VerifyState extends State<Verify> {
                           height: 7.h,
                           width: constraints.maxWidth/4,
                           child: TextFormField(
+                            controller: otp2,
                             keyboardType: TextInputType.number,
                             maxLength: 3,
                             autofocus: true,
@@ -225,6 +230,7 @@ class _VerifyState extends State<Verify> {
                           height:7.h,
                           width: constraints.maxWidth/4,
                           child: TextFormField(
+                            controller: otp3,
                             keyboardType: TextInputType.number,
                             maxLength: 3,
                             autofocus: true,
@@ -276,8 +282,13 @@ class _VerifyState extends State<Verify> {
                       ),
                       onPressed: () {
                         if(_formkey.currentState!.validate()){
-                          Get.to(TechNav());
+                          Get.off(TechNav());
+                            setState(() {
+                              otp1.clear();
+                              otp2.clear();
+                              otp3.clear();
 
+                            });
                         };
                       }, child: Text("Next",
                     style: GoogleFonts.poppins(
