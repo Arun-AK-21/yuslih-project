@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_figma_project/authentication/auth.dart';
 import 'package:new_figma_project/bottom_navigation/bottom_bar1.dart';
+import 'package:new_figma_project/login_paint.dart';
+import 'package:new_figma_project/new_homepage.dart';
 import 'package:new_figma_project/test_1.dart';
 import 'package:new_figma_project/user_details.dart';
 import 'package:new_figma_project/validation/form_valid.dart';
@@ -11,8 +13,10 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import 'technician_page/personal_info.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+
 
 class MySign1 extends StatefulWidget {
   const MySign1({super.key});
@@ -30,29 +34,8 @@ class _MySign1State extends State<MySign1> {
   final TextEditingController _cPassController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   var iconColor= Color(0xFFaeb9c4);
-  Future<void>signInWithEmailAndPassword()async{
-    try{
-      await Auth().signInWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text);
-    }on FirebaseAuthException catch(e){
-      setState(() {
-        errorMessage=e.message;
-      });
-    }
-  }
-  Future<void>createUserWithEmailAndPassword()async{
-    try{
-      Auth().createUserWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text);
-    }on FirebaseAuthException catch(e){
-      setState(() {
-        errorMessage=e.message;
-      });
-    }
-  }
-
+  final FirebaseAuthService _auth = FirebaseAuthService();
+ 
 
   @override
 
@@ -233,7 +216,7 @@ class _MySign1State extends State<MySign1> {
                             Provider.of<UserDetails>(context, listen: false)
                                 .loginName(_emailController.text);
 
-
+                               signUp();
                             Get.to(BottomNav1());
                             // Get.showSnackbar(
                             //   GetSnackBar(
@@ -282,7 +265,7 @@ class _MySign1State extends State<MySign1> {
 
                           ),
                           onPressed: () {
-
+                           
                           Get.to(PersonalInfo());
                           }, child: Text("Iam a technician",
                         style: GoogleFonts.poppins(
@@ -299,6 +282,17 @@ class _MySign1State extends State<MySign1> {
           ) ),
     );
   }
+  void signUp()async{
+    String email=_emailController.text;
+    String password = _passwordController.text;
 
+    User? user =await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    if(user!=null){
+      print("user created successfully");
+      Get.to(BottomNav1());
+    }else{
+      print("error occured");
+    }
+  }
 }
 

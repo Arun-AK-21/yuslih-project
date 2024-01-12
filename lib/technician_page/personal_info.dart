@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -172,8 +173,21 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       backgroundColor: Color(0xff3F54D1),
                       foregroundColor: Colors.white
                     ),
-                    onPressed: () {
+                    onPressed: ()async {
                   if(formkey.currentState!.validate()){
+                    await FirebaseAuth.instance.verifyPhoneNumber(
+                      verificationCompleted: (PhoneAuthCredential credential) {
+
+                      } , 
+                      verificationFailed: (FirebaseAuthException ex) {
+                        
+                      }, 
+                      codeSent: (String verificationId, int? resendToken) {
+                        
+                      }, 
+                      codeAutoRetrievalTimeout: (String verificationId) {
+                        
+                      },phoneNumber:_phoneController.text.toString() );
                      Get.to(ExpertTech());
                     // Navigator.of(context).push(MaterialPageRoute(builder: (context) => ExpertTech(),));
                       setState(() {

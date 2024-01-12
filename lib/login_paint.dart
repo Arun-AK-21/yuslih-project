@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:new_figma_project/authentication/auth.dart';
 import 'package:new_figma_project/bottom_navigation/bottom_bar1.dart';
 import 'package:new_figma_project/new_homepage.dart';
 import 'package:new_figma_project/test_1.dart';
@@ -20,6 +22,7 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  final FirebaseAuthService _auth = FirebaseAuthService();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -126,7 +129,9 @@ class _MyHomeState extends State<MyHome> {
                         ),
                           onPressed: () {
                           if(_formkey.currentState!.validate()){
-
+                            signIn();
+                            Provider.of<UserDetails>(context, listen: false)
+                                .loginName(emailController.text);
                            Get.to(BottomNav1());
                            Get.snackbar("Login successful", "Welcome back",
                                snackPosition: SnackPosition.BOTTOM,
@@ -197,5 +202,17 @@ class _MyHomeState extends State<MyHome> {
             ) ),
       ),
     );
+  }
+  void signIn()async{
+    String email=emailController.text;
+    String password = passwordController.text;
+
+    User? user =await _auth.signInWithEmailAndPassword(email: email, password: password);
+    if(user!=null){
+      print("user logged in successfully");
+      Get.to(BottomNav1());
+    }else{
+      print("error occured");
+    }
   }
 }

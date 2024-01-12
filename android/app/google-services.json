@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "493732846141",
+    "project_id": "yuslih-project",
+    "storage_bucket": "yuslih-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493732846141:android:930aa46ddcf2952fbda854",
+        "android_client_info": {
+          "package_name": "com.example.new_figma_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMMvBevvIgdASr1LyzFqy2pu8QHvtTJUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

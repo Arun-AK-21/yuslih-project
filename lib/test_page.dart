@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_figma_project/authentication/auth.dart';
 import 'package:new_figma_project/bottom_navigation/finder_screen.dart';
 import 'package:new_figma_project/bottom_navigation/schedules.dart';
 import 'package:new_figma_project/login_paint.dart';
@@ -6,7 +7,7 @@ import 'package:new_figma_project/workers/favorites.dart';
 import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'user_details.dart';
 import 'package:get/get.dart';
 
@@ -224,7 +225,10 @@ class _ProfileOneState extends State<ProfileOne> {
             ),
           ),
           Divider(thickness: 2,color: dividerColor,height: 30),
-          ListTile(onTap: () => Get.to(MyHome()),
+          ListTile(onTap: (){
+            Get.to(MyHome());
+            FirebaseAuth.instance.signOut();
+          },
             leading: Container(
               height: 44,
               width: 43,

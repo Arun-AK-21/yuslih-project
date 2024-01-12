@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:new_figma_project/bottom_navigation/bottom_bar1.dart';
 import 'package:new_figma_project/login_paint.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:new_figma_project/sign_up_figma.dart';
 class MySplash extends StatefulWidget {
   const MySplash({super.key});
 
@@ -18,7 +21,15 @@ class _MySplashState extends State<MySplash> {
             children: [
               AnimatedSplashScreen(
                   splash: SvgPicture.asset('assets/images/yuslih.svg'),
-                  nextScreen:MyHome(),
+                  nextScreen:StreamBuilder(
+                    stream: FirebaseAuth.instance.authStateChanges(), 
+                    builder: (context, snapshot) {
+                      if(snapshot.hasData){
+                        return BottomNav1();
+                      }else {
+                        return MyHome();
+                      }
+                    },),
               animationDuration: Duration(seconds: 1),
               splashTransition:SplashTransition.scaleTransition,
 
